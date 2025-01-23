@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gameboy Cart Badge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+</head>
+<body>
+    <div class="hero" data-aos="fade-in">
+        <h1>Gameboy Cart Badge</h1>
+        <p>Unique, Cool & Retro. Sign up for launch updates!</p>
+    </div>
+
+    <div class="social-buttons">
+        <a href="https://t.me/Lohivv" target="_blank">
+            <img src="./res/telegram.png" alt="Telegram">
+        </a>
+        <a href="https://x.com/Lohiv_" target="_blank">
+            <img src="./res/x.png" alt="X">
+        </a>
+        <a href="https://lohi.bsky.social" target="_blank">
+            <img src="./res/bsky.png" alt="Bluesky">
+        </a>
+    </div>
+
+    <div class="section" data-aos="fade-up">
+        <div class="section-content">
+            <div class="section-text">
+                <h2>What Is It?</h2>
+                <p>This is a custom Gameboy cartridge that functions as both a playable game and a wearable badge. Use it with your real Gameboy to stand out and showcase your style!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" data-aos="fade-up">
+        <div class="section-content">
+            <div class="section-text">
+                <h2>How Does It Look?</h2>
+                <p>Everything is custom! All the art, names, interactivity, case color, labels etc. is done specifically for the badge and tailored for you!</p>
+                <div class="img-container">
+                    <img src="./res/sc1.png" alt="Screenshot 1" class="screenshot">
+                    <img src="./res/sc2.png" alt="Screenshot 2" class="screenshot">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" data-aos="fade-up">
+        <div class="section-content">
+            <div class="section-text">
+                <h2>Where Do I Get One?</h2>
+                <p>After the launch, we'll select few lucky applicants. You can then decide how to spec out your own unique cartrigde!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" data-aos="fade-up">
+        <div class="section-content">
+            <div class="section-text">
+                <h2>When Is It Available?</h2>
+                <p>Commissions will open later this year! To be applicaple, Sign Up below and we'll notify you when they become available!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" data-aos="fade-up">
+        <div class="section-content">
+            <div class="section-text">
+                <h2>How Much?</h2>
+                <p>Price will be starting at around 350€ (EUR) and goes up depending on the complexity of the design.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="signup" id="signup" data-aos="fade-up" data-aos-delay="400">
+        <h2>Get Notified!</h2>
+        <p>Add your email or Telegram to join the lottery list!</p>
+
+        <div class="popup" id="thankYouPopup" >
+            <h3>Thank you for signing up!</h3>
+        </div>
+
+        <form action="http://localhost:3000/signup" method="POST" onsubmit="handleSubmit(event)">
+            <label for="email">Email (*):</label>
+            <input type="email" name="email" placeholder="lohi@example.com" required>
+            <label for="telegram">Telegram:</label>
+            <input type="telegram" name="telegram" placeholder="@Lohivv">
+            <div class="h-captcha" data-sitekey="d7bef2e2-5f48-47e0-b230-9266cfa61c1e" data-callback="onCaptchaSuccess"></div>
+            <br>
+            <button type="submit" id="submitButton" disabled>Sign Up</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2025 Lohi. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // For AOS animations
+        AOS.init();
+
+        // Captcha callback to enable submit button
+        function onCaptchaSuccess() {
+            document.getElementById('submitButton').removeAttribute('disabled');
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent the form from submitting via the browser
+            const form = event.target; // Ensure this references the form element
+            const popup = document.getElementById('thankYouPopup');
+            const button = document.getElementById('submitButton');
+
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(new FormData(form)),
+            })
+            .then((response) => {
+                if (response.ok) {
+                    popup.classList.add('visible');
+                    form.reset();
+                    button.setAttribute('disabled', '');
+                } else {
+                    alert('Submission failed. Please try again.');
+                }
+            })
+            .catch(() => {
+                alert('Submission failed. Please try again.');
+            });
+        }
+    </script>
+</body>
+</html>
