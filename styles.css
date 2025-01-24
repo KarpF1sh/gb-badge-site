@@ -92,12 +92,12 @@ body {
 .img-container {
     display: flex;
     justify-content: center;
-    max-width: 250px;
+    max-width: 60%;
     margin: 0 auto;
 }
 .img-container img {
     flex: 1;
-    max-width: 100%;
+    max-width: 80%;
     border-radius: 8px;
     padding: 10px;
     border-radius: 10%;
