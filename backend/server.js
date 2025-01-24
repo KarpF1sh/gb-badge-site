@@ -1,7 +1,7 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
-const hcaptcha = require('express-hcaptcha');
+const hcaptcha = require('./hcaptcha');
 const cors = require('cors');
 
 // your hcaptcha secret key
@@ -33,8 +33,15 @@ const db = new sqlite3.Database('./subscribers.db', (err) => {
     }
 });
 
+app.get('/signup', (req, res) => {
+    return res.send('You cheaky little monkey');
+});
+
 // API Route with HCaptcha Middleware
+// Need to patch node_modules/express-hcaptcha/index.js to support h-captcha-response
+// const token = req.body["g-recaptcha-response"] ?? req.body["h-captcha-response"] ?? req.query["g-recaptcha-response"] ?? req.query["h-captcha-response"];
 app.post('/signup', hcaptcha.middleware.validate(SECRET), (req, res) => {
+    res.cookie('cookieName', 'cookieValue', { sameSite: 'none', secure: true})
     const { email, telegram } = req.body;
     //console.log(req);
 
