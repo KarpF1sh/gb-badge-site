@@ -1,6 +1,6 @@
 body {
     margin: 0 auto;
-    font-family: 'Courier New', monospace;
+    font-family: 'Pixelify Sans', monospace;
     /*background-color: #111;
     color: #fff;*/
     display: flex;
@@ -15,7 +15,12 @@ body {
     width: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
-    background: linear-gradient(180deg, #ffffff, #e2e1e1);
+    color: #fff;
+    text-shadow: 0px 4px 2px rgba(0, 0, 0, 1);
+    /*background: linear-gradient(180deg, #ffffff, #e2e1e1);*/
+    background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ),url("res/banner.jpg");
+    background-size: cover;
+    background-position-y: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,12 +36,10 @@ body {
     margin-top: 10px;
 }
 .social-buttons {
-    margin: 20px 0;
     display: flex;
     gap: 15px;
-    background-color: whitesmoke;
-    padding: 10px;
-    border-radius: 10% / 25%;
+    padding: 5px;
+    border-radius: 20% / 40%;
 }
 .social-buttons a {
     display: flex;
@@ -45,9 +48,8 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #333;
-    border: 2px solid #444;
-    text-decoration: none;
+    border: 2px solid #c7c7c7;
+    text-decoration: rgb(255, 255, 255);
     color: #fff;
     transition: background-color 0.3s;
     transition: all .15s ease-in-out;
@@ -60,6 +62,39 @@ body {
     width: 100%;
     height: 100%;
 }
+
+.telegram-button {
+    margin-top: 50px;
+    display: flex;
+    border-radius: 5% / 7%;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
+    padding: 10px;
+}
+.telegram-button a {
+    width: 200px;
+    height: 50px;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #fff;
+}
+
+.telegram-button h2 {
+    background: linear-gradient(to right, red, rgb(255, 217, 0), green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.telegram-button img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    margin: none;
+    border-radius: 5% / 15%;
+}
+
 .section {
     margin: 50px 0;
     padding: 20px;
@@ -82,6 +117,7 @@ body {
 .section-text {
     display: flex;
     flex-direction: column;
+    width: 80%;
     align-items: center;
     background-color: #cee76a;
     border-radius: 8px;
@@ -92,13 +128,15 @@ body {
 .img-container {
     display: flex;
     justify-content: center;
-    max-width: 60%;
+    width: 100%;
+    overflow: hidden;
+    height: auto;
     margin: 0 auto;
 }
 .img-container img {
-    flex: 1;
-    max-width: 80%;
-    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     padding: 10px;
     border-radius: 10%;
 }
